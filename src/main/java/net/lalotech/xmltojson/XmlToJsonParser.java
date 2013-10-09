@@ -25,7 +25,18 @@ import org.w3c.dom.Document;
  */
 public class XmlToJsonParser {
 
-    Logger log = Logger.getLogger(this.getClass());
+    static Logger log = Logger.getLogger(XmlToJsonParser.class);
+    
+    /**
+     * Simple parser xml to json
+     * 
+     * @param xmlContent
+     * @return
+     * @throws Exception 
+     */
+    public JSONObject xmlStringContentToJsonObject(String xmlContent)throws Exception{
+        return XML.toJSONObject(xmlContent);
+    }
 
    /**
      * Metodo que lee un archivo XML y lo comvierte en un Objecto JSON
@@ -61,6 +72,7 @@ public class XmlToJsonParser {
         transformer.transform(new DOMSource(doc), new StreamResult(writer));
         String output = writer.getBuffer().toString().replaceAll("\n|\r", "");
         output = output.replaceAll("'", "\'");
+        log.debug(output);
         return XML.toJSONObject(output);
     }
 }
