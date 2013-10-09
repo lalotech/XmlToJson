@@ -15,7 +15,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.apache.log4j.Logger;
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
 import org.w3c.dom.Document;
@@ -25,16 +24,32 @@ import org.w3c.dom.Document;
  * @author Eduardo
  */
 public class XmlToJsonParser {
+
     Logger log = Logger.getLogger(this.getClass());
-    
-    public static JSONObject fileNameToJsonObject(String filename)throws Exception{
+
+   /**
+     * Metodo que lee un archivo XML y lo comvierte en un Objecto JSON
+     *
+     * @param filename
+     * @return
+     * @throws Exception
+     */
+    public static JSONObject fileNameToJsonObject(String filename) throws Exception {
         return fileToJsonObject(new File(filename));
     }
+
+    /**
+     * Metodo que lee un archivo XML y lo comvierte en un Objecto JSON
+     *
+     * @param file
+     * @return
+     * @throws Exception
+     */
     public static JSONObject fileToJsonObject(File file) throws Exception {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document doc = dBuilder.parse(file);
-        
+
         //optional, but recommended
         //read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
         doc.getDocumentElement().normalize();

@@ -29,18 +29,23 @@ import org.w3c.dom.Document;
  */
 public class AppMB {
 
-    public static void main(String[] args) throws Exception {
-        String path = "C:\\Users\\Eduardo\\Downloads\\Lnea1MetrobsAvdelosInsurgentes.kml";
-
-        //String r = XmlToJsonParser.fileToJsonObject(new File(path)).toString();
-        JSONObject obj = XmlToJsonParser.fileNameToJsonObject(path);
-        //JSONArray places = XmlToJsonUtil.selectSubArrayJson(obj, "Placemark");
-        JSONArray places = XmlToJsonUtil.selectSubArrayJson(obj, new String[]{"kml", "Document", "Placemark"});
-        //JSONObject name = XmlToJsonUtil.selectSubObjectJson(obj, new String[]{"kml","Document","test"});
-        String r = places.toString();
-        System.out.println(r);
-        Type listType = new TypeToken<List<Placemark>>(){}.getType();
-        List<Placemark> p = new Gson().fromJson(r, listType);
-        System.err.println("places: "+p.size());
+    public static void main(String[] args) throws Exception {        
+        
+        String pathDemo = "C:\\Users\\Eduardo\\Desktop\\database.xml";
+        String json = XmlToJsonParser.fileNameToJsonObject(pathDemo).toString();             
+        
+//        String path = "C:\\Users\\Eduardo\\Downloads\\Lnea1MetrobsAvdelosInsurgentes.kml";
+//
+//        //String r = XmlToJsonParser.fileToJsonObject(new File(path)).toString();
+//        JSONObject obj = XmlToJsonParser.fileNameToJsonObject(path);
+//        //JSONArray places = XmlToJsonUtil.selectSubArrayJson(obj, "Placemark");
+//        JSONArray places = XmlToJsonUtil.selectSubArrayJson(obj, new String[]{"kml", "Document", "Placemark"});
+//        //JSONObject name = XmlToJsonUtil.selectSubObjectJson(obj, new String[]{"kml","Document","test"});
+//        String r = places.toString();
+//        System.out.println(r);
+//        Type listType = new TypeToken<List<Placemark>>(){}.getType();
+//        List<Placemark> p = new Gson().fromJson(r, listType);
+//        System.err.println("places: "+p.size());
+        
     }
 }
